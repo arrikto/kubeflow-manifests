@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeflow-reception
+  namespace: kubeflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubeflow-reception
+  template:
+    metadata:
+      labels:
+        app: kubeflow-reception
+    spec:
+      containers:
+      - name: reception
+        image: gcr.io/arrikto-public/kubeflow/reception:v0.1
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080
+      serviceAccountName: kubeflow-reception

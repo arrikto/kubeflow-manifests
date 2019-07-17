@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubeflow-reception
+  namespace: kubeflow
+spec:
+  ports:
+  - name: kubeflow-reception
+    port: 8080
+  selector:
+    app: kubeflow-reception
+  type: ClusterIP

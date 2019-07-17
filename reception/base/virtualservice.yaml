@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kubeflow-reception
+  namespace: kubeflow
+spec:
+  gateways:
+  - kubeflow-gateway
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: /reception
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: kubeflow-reception.kubeflow.svc.cluster.local
+        port:
+          number: 8080

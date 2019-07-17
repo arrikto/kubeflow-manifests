@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+- virtualservice.yaml
+- clusterrole.yaml
+- rolebinding.yaml
+- serviceaccount.yaml
+namespace: kubeflow
+commonLabels:
+  kustomize.component: kubeflow-reception
+images:
+  - name: gcr.io/arrikto-public/kubeflow/reception
+    newName: gcr.io/arrikto-public/kubeflow/reception
+    newTag: v0.7.0-20-g29ded2f1
