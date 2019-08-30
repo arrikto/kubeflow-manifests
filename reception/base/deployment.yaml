@@ -17,6 +17,11 @@ spec:
       - name: reception
         image: gcr.io/arrikto-public/kubeflow/reception:v0.1
         imagePullPolicy: Always
+        env:
+        - name: USERID_HEADER
+          value: $(userid-header)
+        - name: USERID_PREFIX
+          value: $(userid-prefix)
         ports:
         - name: http
           containerPort: 8080

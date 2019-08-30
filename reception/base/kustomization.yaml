@@ -14,3 +14,25 @@ images:
   - name: gcr.io/arrikto-public/kubeflow/reception
     newName: gcr.io/arrikto-public/kubeflow/reception
     newTag: v0.7.0-20-g29ded2f1
+configMapGenerator:
+- name: reception-parameters
+  env: params.env
+generatorOptions:
+  disableNameSuffixHash: true
+vars:
+- name: userid-header
+  objref:
+    kind: ConfigMap
+    name: reception-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.userid-header
+- name: userid-prefix
+  objref:
+    kind: ConfigMap
+    name: reception-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.userid-prefix
+configurations:
+- params.yaml
