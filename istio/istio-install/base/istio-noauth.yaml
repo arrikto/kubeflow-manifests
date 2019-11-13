@@ -12751,7 +12751,7 @@ data:
         [[ else -]]
           limits:
             cpu: 2000m
-            memory: 128Mi
+            memory: 512Mi
           requests:
             cpu: 10m
             memory: 40Mi
@@ -14491,7 +14491,7 @@ spec:
           resources:
             limits:
               cpu: 100m
-              memory: 128Mi
+              memory: 512Mi
             requests:
               cpu: 10m
               memory: 40Mi
@@ -14669,7 +14669,7 @@ spec:
           resources:
             limits:
               cpu: 100m
-              memory: 128Mi
+              memory: 512Mi
             requests:
               cpu: 10m
               memory: 40Mi
@@ -15177,7 +15177,7 @@ spec:
         resources:
           limits:
             cpu: 2000m
-            memory: 128Mi
+            memory: 512Mi
           requests:
             cpu: 10m
             memory: 40Mi
@@ -15355,7 +15355,7 @@ spec:
         resources:
           limits:
             cpu: 2000m
-            memory: 128Mi
+            memory: 512Mi
           requests:
             cpu: 10m
             memory: 40Mi
@@ -15498,7 +15498,7 @@ spec:
           resources:
             limits:
               cpu: 2000m
-              memory: 128Mi
+              memory: 512Mi
             requests:
               cpu: 10m
               memory: 40Mi
