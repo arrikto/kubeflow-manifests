@@ -47,6 +47,8 @@ spec:
             value: $(application_secret)
           - name: STORE_PATH
             value: /var/lib/authservice/data.db
+          - name: STATIC_DESTINATION_URL
+            value: $(static_destination_url)
         volumeMounts:
           - name: data
             mountPath: /var/lib/authservice
