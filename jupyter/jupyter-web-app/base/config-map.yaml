@@ -57,7 +57,7 @@ data:
             value: 'workspace-{notebook-name}'
           size:
             # The Size of the Workspace Volume (in Gi)
-            value: '10Gi'
+            value: '5Gi'
           mountPath:
             # The Path that the Workspace Volume will be mounted
             value: /home/jovyan
