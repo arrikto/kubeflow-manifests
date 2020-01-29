@@ -87,6 +87,8 @@ spec:
     metadata:
       labels:
         component: server
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: container
@@ -123,6 +125,8 @@ spec:
     metadata:
       labels:
         component: grpc-server
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
         - name: container
@@ -183,6 +187,8 @@ spec:
       name: ui
       labels:
         app: metadata-ui
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - image: gcr.io/kubeflow-images-public/metadata-frontend:v0.1.8
@@ -273,6 +279,8 @@ spec:
     metadata:
       labels:
         component: envoy
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: container
