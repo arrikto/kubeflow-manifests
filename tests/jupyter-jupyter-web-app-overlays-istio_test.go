@@ -327,6 +327,9 @@ metadata:
 spec:
   replicas: 1
   template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - env:

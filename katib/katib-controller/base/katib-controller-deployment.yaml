@@ -15,7 +15,6 @@ spec:
         app: katib-controller
       annotations:
         sidecar.istio.io/inject: "false"
-        prometheus.io/scrape: "true"
     spec:
       serviceAccountName: katib-controller
       containers:

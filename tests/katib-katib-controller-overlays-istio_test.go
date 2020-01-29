@@ -1,6 +1,8 @@
 package tests_test
 
 import (
+	"testing"
+
 	"sigs.k8s.io/kustomize/v3/k8sdeps/kunstruct"
 	"sigs.k8s.io/kustomize/v3/k8sdeps/transformer"
 	"sigs.k8s.io/kustomize/v3/pkg/fs"
@@ -10,7 +12,6 @@ import (
 	"sigs.k8s.io/kustomize/v3/pkg/resource"
 	"sigs.k8s.io/kustomize/v3/pkg/target"
 	"sigs.k8s.io/kustomize/v3/pkg/validators"
-	"testing"
 )
 
 func writeKatibControllerOverlaysIstio(th *KustTestHarness) {
@@ -120,7 +121,6 @@ spec:
         app: katib-controller
       annotations:
         sidecar.istio.io/inject: "false"
-        prometheus.io/scrape: "true"
     spec:
       serviceAccountName: katib-controller
       containers:
@@ -346,7 +346,7 @@ spec:
       name: katib-mysql
       labels:
         app: katib
-        component: mysql
+        component: db
       annotations:
         sidecar.istio.io/inject: "false"
     spec:
@@ -453,7 +453,7 @@ spec:
       name: katib-db-manager
       labels:
         app: katib
-        component: db-manager
+        component: manager
       annotations:
         sidecar.istio.io/inject: "false"
     spec:
@@ -523,6 +523,8 @@ spec:
       labels:
         app: katib
         component: ui
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: katib-ui
