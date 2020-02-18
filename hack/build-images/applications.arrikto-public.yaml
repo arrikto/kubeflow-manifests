@@ -1,0 +1,208 @@
+# This file is used by Kubeflow to generate Tekton Pipelines for CD.
+# We use it for generating images locally, using Docker.
+# Source: https://github.com/kubeflow/testing/blob/master/apps-cd/applications.yaml
+#
+# Applications provides information about each application to build
+# Note: Keep applications organized alphabetically by name.
+
+# TODO:
+# - reception
+# - oidc-authservice
+applications:
+  - name: admission-webhook
+    params:
+      - name: "path_to_context"
+        value: "components/admission-webhook"
+      - name: "path_to_docker_file"
+        value: "components/admission-webhook/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "admission-webhook/webhook/base"
+      - name: "src_image_url"
+        value: "gcr.io/kubeflow-images-public/admission-webhook"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/admission-webhook"
+    sourceRepo: kubeflow
+  - name: centraldashboard
+    params:
+      - name: "path_to_context"
+        value: "components/centraldashboard"
+      - name: "path_to_docker_file"
+        value: "components/centraldashboard/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "common/centraldashboard/base"
+      - name: "src_image_url"
+        value: "gcr.io/kubeflow-images-public/centraldashboard"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/centraldashboard"
+    sourceRepo: kubeflow
+  - name: cloudcmd
+    params:
+      - name: "path_to_context"
+        value: ""
+      - name: "path_to_docker_file"
+        value: "Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "pvcviewer-controller/base"
+      - name: "src_image_url"
+        value: "coderaiser/cloudcmd"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/cloudcmd"
+    sourceRepo: cloudcmd
+  - name: kfam
+    params:
+      - name: "path_to_context"
+        value: "components/access-management"
+      - name: "path_to_docker_file"
+        value: "components/access-management/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "profiles/base"
+      - name: "src_image_url"
+        value: "gcr.io/kubeflow-images-public/kfam"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/kfam"
+    sourceRepo: kubeflow
+  - name: notebook-controller
+    params:
+      - name: "path_to_context"
+        value: "components"
+      - name: "path_to_docker_file"
+        value: "components/notebook-controller/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "jupyter/notebook-controller/base"
+      - name: "src_image_url"
+        value: "gcr.io/kubeflow-images-public/notebook-controller"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/notebook-controller"
+    # The name of the repo containing the source
+    sourceRepo: kubeflow
+  - name: jupyter-webapp
+    params:
+      - name: "path_to_context"
+        value: "components/jupyter-web-app"
+      - name: "path_to_docker_file"
+        value: "components/jupyter-web-app/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "jupyter/jupyter-web-app/base"
+      - name: "src_image_url"
+        value: "gcr.io/kubeflow-images-public/jupyter-web-app"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/jupyter-web-app"
+    # The name of the repo containing the source
+    sourceRepo: kubeflow
+  - name: oidc-authservice
+    params:
+      - name: "path_to_context"
+        value: ""
+      - name: "path_to_docker_file"
+        value: "Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "istio/oidc-authservice/base"
+      - name: "src_image_url"
+        value: "gcr.io/arrikto/kubeflow/oidc-authservice"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/oidc-authservice"
+    sourceRepo: oidc-authservice
+  - name: ml-pipeline/frontend
+    params:
+      - name: "path_to_context"
+        value: ""
+      - name: "path_to_docker_file"
+        value: "frontend/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "pipeline/pipelines-ui/base"
+      - name: "src_image_url"
+        value: "gcr.io/ml-pipeline/frontend"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/ml-pipeline/frontend"
+    sourceRepo: pipelines
+  - name: profile-controller
+    params:
+      - name: "path_to_context"
+        value: "components/profile-controller"
+      - name: "path_to_docker_file"
+        value: "components/profile-controller/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "profiles/base"
+      - name: "src_image_url"
+        value: "gcr.io/kubeflow-images-public/profile-controller"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/profile-controller"
+    sourceRepo: kubeflow
+  - name: pvcviewer-controller
+    params:
+      - name: "path_to_context"
+        value: "components/pvcviewer-controller"
+      - name: "path_to_docker_file"
+        value: "components/pvcviewer-controller/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "pvcviewer-controller/base"
+      - name: "src_image_url"
+        value: "controller"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/pvcviewer-controller"
+    sourceRepo: kubeflow
+  - name: reception
+    params:
+      - name: "path_to_context"
+        value: "components/reception"
+      - name: "path_to_docker_file"
+        value: "components/reception/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "reception/base"
+      - name: "src_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/reception"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/reception"
+    sourceRepo: kubeflow
+  - name: volumes-web-app
+    params:
+      - name: "path_to_context"
+        value: ""
+      - name: "path_to_docker_file"
+        value: "components/volumes-web-app/Dockerfile"
+      - name: "path_to_manifests_dir"
+        value: "volumes-web-app/base"
+      - name: "src_image_url"
+        value: "gcr.io/arrikto-playground/volumes-web-app"
+      - name: "dst_image_url"
+        value: "gcr.io/arrikto-public/kubeflow/volumes-web-app"
+    sourceRepo: kubeflow
+# The versions to build the applications at
+# Each version should consist of a list of repositories and the corresponding
+# branch and a tag
+versions:
+  # Define a v1-0 release
+  - name: v1-0
+    # A tag to prefix image names with
+    tag: "v1.0.0"
+    repos:
+      - name: cloudcmd
+        resourceSpec:
+          type: local
+          params:
+            - name: path
+              value: /home/yanniszark/go/src/github.com/coderaiser/cloudcmd
+      - name: kubeflow
+        resourceSpec:
+          type: local
+          params:
+            - name: path
+              value: /home/yanniszark/go/src/github.com/kubeflow/kubeflow
+      - name: pipelines
+        resourceSpec:
+          type: local
+          params:
+            - name: path
+              value: /home/yanniszark/go/src/github.com/kubeflow/pipelines
+      - name: oidc-authservice
+        resourceSpec:
+          type: local
+          params:
+            - name: path
+              value: /home/yanniszark/go/src/github.com/arrikto/oidc-authservice
+      - name: manifests
+        resourceSpec:
+          type: local
+          params:
+            - name: path
+              value: /home/yanniszark/go/src/github.com/kubeflow/manifests
