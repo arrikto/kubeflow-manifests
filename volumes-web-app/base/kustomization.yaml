@@ -1,0 +1,15 @@
+namespace: kubeflow
+
+commonLabels:
+  app: volumes-web-app
+
+resources:
+  - rbac.yaml
+  - service.yaml
+  - deployment.yaml
+  - virtualservice.yaml
+
+images:
+- name: gcr.io/arrikto-playground/volumes-web-app
+  newName: gcr.io/arrikto-playground/volumes-web-app
+  newTag: latest

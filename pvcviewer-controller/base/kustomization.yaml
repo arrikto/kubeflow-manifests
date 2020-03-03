@@ -19,6 +19,7 @@ images:
 - name: controller
   newName: gcr.io/arrikto-playground/pvcviewer-controller
   newTag: v0.4.0-rc.1-925-g00d52d25
+- name: coderaiser/cloudcmd
 
 namespace: kubeflow
 
@@ -44,3 +45,6 @@ patchesStrategicMerge:
   # Only one of manager_auth_proxy_patch.yaml and
   # manager_prometheus_metrics_patch.yaml should be enabled.
 #- manager_prometheus_metrics_patch.yaml
+
+configurations:
+- pvcviewer_image_configuration.yaml

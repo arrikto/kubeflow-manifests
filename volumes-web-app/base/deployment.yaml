@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: volumes-web-app
+  name: volumes-web-app
+  namespace: kubeflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: volumes-web-app
+  template:
+    metadata:
+      labels:
+        app: volumes-web-app
+    spec:
+      containers:
+      - image: gcr.io/arrikto-playground/volumes-web-app
+        imagePullPolicy: Always
+        name: volumes-web-app
+        env:
+          - name: UI_FLAVOR
+            value: rok
+          - name: USERID_HEADER
+            value: kubeflow-userid
+        ports:
+        - containerPort: 5000
+      serviceAccountName: volumes-web-app
