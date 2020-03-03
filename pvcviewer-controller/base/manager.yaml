@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller-manager
+  namespace: system
+  labels:
+    control-plane: controller-manager
+spec:
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        control-plane: controller-manager
+    spec:
+      containers:
+        - command:
+            - /manager
+          image: controller:latest
+          name: manager
+          imagePullPolicy: Always
+          env:
+            - name: ENABLE_CULLING
+              value: "true"
+            - name: VIEWER_URL
+              value: "/volume/browser/%s/%s"
+            - name: VIEWER_IMAGE
+              value: "coderaiser/cloudcmd"
+            - name: VIEWER_PULL_POLICY
+              value: "IfNotPresent"
+          resources:
+            limits:
+              cpu: 100m
+              memory: 30Mi
+            requests:
+              cpu: 100m
+              memory: 20Mi
+      terminationGracePeriodSeconds: 10
