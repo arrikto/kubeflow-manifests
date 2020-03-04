@@ -30,3 +30,16 @@ secretGenerator:
 
 generatorOptions:
   disableNameSuffixHash: true
+
+configMapGenerator:
+- name: dex-theme
+  files:
+  - theme/favicon.png
+  - theme/logo.png
+  # https://raw.githubusercontent.com/dexidp/dex/master/web/themes/coreos/styles.css
+  - theme/styles.css
+# XXX: Override existing templates, i.e.,
+# https://github.com/dexidp/dex/tree/master/web/templates
+- name: dex-templates
+  files:
+  - templates/password.html
