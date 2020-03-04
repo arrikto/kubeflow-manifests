@@ -20,8 +20,8 @@ images:
   newName: gcr.io/arrikto-public/kubeflow/pvcviewer-controller
   newTag: v1.0.0-arr-47-g54cbfb01
 - name: coderaiser/cloudcmd
-  newName: gcr.io/arrikto-public/kubeflow/cloudcmd
-  newTag: v14.3.0-9-gbda4b072
+  newName: gcr.io/arrikto-public/kubeflow/volumes-viewer
+  newTag: v14.3.0-12-g79d7536b
 namespace: kubeflow
 
 # Value of this field is prepended to the
