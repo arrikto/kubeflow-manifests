@@ -11,9 +11,9 @@ namespace: kubeflow
 commonLabels:
   kustomize.component: kubeflow-reception
 images:
-  - name: gcr.io/arrikto-public/kubeflow/reception
-    newName: gcr.io/arrikto-public/kubeflow/reception
-    newTag: v0.7.0-20-g29ded2f1
+- name: gcr.io/arrikto-public/kubeflow/reception
+  newName: gcr.io/arrikto-public/kubeflow/reception
+  newTag: v1.0.0-arr-47-g54cbfb01
 configMapGenerator:
 - name: reception-parameters
   env: params.env
