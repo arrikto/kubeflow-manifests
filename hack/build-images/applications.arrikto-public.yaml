@@ -35,7 +35,7 @@ applications:
       - name: "dst_image_url"
         value: "gcr.io/arrikto-public/kubeflow/centraldashboard"
     sourceRepo: kubeflow
-  - name: cloudcmd
+  - name: volumes-viewer
     params:
       - name: "path_to_context"
         value: ""
@@ -46,7 +46,7 @@ applications:
       - name: "src_image_url"
         value: "coderaiser/cloudcmd"
       - name: "dst_image_url"
-        value: "gcr.io/arrikto-public/kubeflow/cloudcmd"
+        value: "gcr.io/arrikto-public/kubeflow/volumes-viewer"
     sourceRepo: cloudcmd
   - name: kfam
     params:
