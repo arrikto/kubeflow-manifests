@@ -150,7 +150,12 @@ class Application(object):
         tag = image_str(self.dst_img, self.tag)
         path = os.path.join(self.repo.path, self.docker_context)
 
+        # TODO: The kubeflowversion build argument is used by the Central
+        # Dashboard. Either standardize all Dockerfiles to use this build
+        # arg, or offer an option to specify a build-arg in the configuration
+        # file.
         cmd = ["docker", "build", "-f", dockerfile, "-t", tag,
+               "--build-arg", "kubeflowversion=%s" % self.repo.git_hash,
                "--label", "com.arrikto.version=%s" % self.repo.git_hash,
                path]
         run(cmd, stdout=sys.stdout, stderr=sys.stderr, log_error=False)
