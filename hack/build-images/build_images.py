@@ -158,7 +158,10 @@ class Application(object):
                "--build-arg", "kubeflowversion=%s" % self.repo.git_hash,
                "--label", "com.arrikto.version=%s" % self.repo.git_hash,
                path]
-        run(cmd, stdout=sys.stdout, stderr=sys.stderr, log_error=False)
+        env = os.environ.copy()
+        env["DOCKER_BUILDKIT"] = "1"
+        run(cmd, stdout=sys.stdout, stderr=sys.stderr, log_error=False,
+            env=env)
 
     def push_image(self):
         log.info("Pushing image for app %s", self.name)
