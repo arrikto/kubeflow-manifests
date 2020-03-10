@@ -15,7 +15,7 @@ namePrefix: admission-webhook-
 images:
 - name: gcr.io/kubeflow-images-public/admission-webhook
   newName: gcr.io/arrikto-public/kubeflow/admission-webhook
-  newTag: v1.0.0-arr-47-g54cbfb01
+  newTag: v1.0-56-g5ae311f8
 namespace: kubeflow
 configMapGenerator:
 - envs:

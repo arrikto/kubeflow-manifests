@@ -18,7 +18,7 @@ resources:
 images:
 - name: controller
   newName: gcr.io/arrikto-public/kubeflow/pvcviewer-controller
-  newTag: v1.0.0-arr-47-g54cbfb01
+  newTag: v1.0-56-g5ae311f8
 - name: coderaiser/cloudcmd
   newName: gcr.io/arrikto-public/kubeflow/volumes-viewer
   newTag: v14.3.0-12-g79d7536b

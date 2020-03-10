@@ -17,10 +17,10 @@ configMapGenerator:
 images:
 - name: gcr.io/kubeflow-images-public/kfam
   newName: gcr.io/arrikto-public/kubeflow/kfam
-  newTag: v1.0.0-arr-47-g54cbfb01
+  newTag: v1.0-56-g5ae311f8
 - name: gcr.io/kubeflow-images-public/profile-controller
   newName: gcr.io/arrikto-public/kubeflow/profile-controller
-  newTag: v1.0.0-arr-47-g54cbfb01
+  newTag: v1.0-56-g5ae311f8
 vars:
 - fieldref:
     fieldPath: data.admin

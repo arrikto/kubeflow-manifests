@@ -15,7 +15,7 @@ commonLabels:
 images:
 - name: gcr.io/kubeflow-images-public/notebook-controller
   newName: gcr.io/arrikto-public/kubeflow/notebook-controller
-  newTag: v1.0.0-arr-47-g54cbfb01
+  newTag: v1.0-56-g5ae311f8
 configMapGenerator:
 - envs:
   - params.env
