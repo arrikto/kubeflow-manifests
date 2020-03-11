@@ -8,7 +8,7 @@ data:
     issuer: $(issuer)
     frontend:
       issuer: $(frontend_issuer)
-      theme: $(fronend_theme)
+      theme: $(frontend_theme)
     storage:
       type: kubernetes
       config:
