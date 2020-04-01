@@ -56,6 +56,7 @@ spec:
   - kustomizeConfig:
       overlays:
       - application
+      - minikf
       parameters:
       - name: namespace
         value: istio-system
@@ -80,6 +81,7 @@ spec:
   - kustomizeConfig:
       overlays:
       - istio
+      - minikf
       parameters:
       - name: namespace
         value: auth
@@ -101,6 +103,8 @@ spec:
     name: dex
   # Reception
   - kustomizeConfig:
+      overlays:
+      - minikf
       repoRef:
         name: manifests
         path: reception
@@ -114,6 +118,8 @@ spec:
         path: argo
     name: argo
   - kustomizeConfig:
+      overlays:
+      - minikf
       repoRef:
         name: manifests
         path: kubeflow-roles
@@ -122,6 +128,7 @@ spec:
       overlays:
       - istio
       - application
+      - minikf
       parameters:
       - name: userid-header
         value: kubeflow-userid
@@ -133,6 +140,7 @@ spec:
       overlays:
       - cert-manager
       - application
+      - minikf
       parameters:
       - name: issuer
         value: arrikto-self-signing-issuer
@@ -144,6 +152,7 @@ spec:
       overlays:
       - istio
       - application
+      - minikf
       parameters:
       - name: userid-header
         value: kubeflow-userid
@@ -171,6 +180,7 @@ spec:
       overlays:
       - istio
       - application
+      - minikf
       repoRef:
         name: manifests
         path: jupyter/notebook-controller
@@ -316,6 +326,7 @@ spec:
       overlays:
       - istio
       - application
+      - minikf
       repoRef:
         name: manifests
         path: pipeline/pipelines-ui
@@ -345,6 +356,7 @@ spec:
       overlays:
       - application
       - istio
+      - minikf
       parameters:
       - name: userid-header
         value: kubeflow-userid
@@ -360,11 +372,15 @@ spec:
         path: seldon/seldon-core-operator
     name: seldon-core-operator
   - kustomizeConfig:
+      overlays:
+      - minikf
       repoRef:
         name: manifests
         path: pvcviewer-controller
     name: pvcviewer-controller
   - kustomizeConfig:
+      overlays:
+      - minikf
       repoRef:
         name: manifests
         path: volumes-web-app
@@ -373,5 +389,4 @@ spec:
   repos:
   - name: manifests
     # uri: https://github.com/kubeflow/manifests/archive/v1.0-branch.tar.gz
-    uri:
   version: v1.0.0
