@@ -76,20 +76,6 @@ vars:
     apiVersion: v1
   fieldref:
     fieldpath: data.application_secret
-- name: frontend_issuer
-  objref:
-    kind: ConfigMap
-    name: dex-parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.frontend_issuer
-- name: frontend_theme
-  objref:
-    kind: ConfigMap
-    name: dex-parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.frontend_theme
 configurations:
 - params.yaml
 images:

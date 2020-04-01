@@ -205,12 +205,6 @@ rules:
   - deletecollection
   - patch
   - update
-- apiGroups:
-  - snapshot.storage.k8s.io
-  resources:
-  - volumesnapshots
-  verbs:
-  - "*"
 
 ---
 

@@ -12751,7 +12751,7 @@ data:
         [[ else -]]
           limits:
             cpu: 2000m
-            memory: 512Mi
+            memory: 128Mi
           requests:
             cpu: 10m
             memory: 40Mi
@@ -14057,7 +14057,7 @@ spec:
     -
       name: http2
       nodePort: 31380
-      port: 8080
+      port: 80
       targetPort: 80
     -
       name: https
@@ -14491,7 +14491,7 @@ spec:
           resources:
             limits:
               cpu: 100m
-              memory: 512Mi
+              memory: 128Mi
             requests:
               cpu: 10m
               memory: 40Mi
@@ -14669,7 +14669,7 @@ spec:
           resources:
             limits:
               cpu: 100m
-              memory: 512Mi
+              memory: 128Mi
             requests:
               cpu: 10m
               memory: 40Mi
@@ -15177,7 +15177,7 @@ spec:
         resources:
           limits:
             cpu: 2000m
-            memory: 512Mi
+            memory: 128Mi
           requests:
             cpu: 10m
             memory: 40Mi
@@ -15355,7 +15355,7 @@ spec:
         resources:
           limits:
             cpu: 2000m
-            memory: 512Mi
+            memory: 128Mi
           requests:
             cpu: 10m
             memory: 40Mi
@@ -15498,7 +15498,7 @@ spec:
           resources:
             limits:
               cpu: 2000m
-              memory: 512Mi
+              memory: 128Mi
             requests:
               cpu: 10m
               memory: 40Mi

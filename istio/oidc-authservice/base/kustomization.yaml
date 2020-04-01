@@ -58,13 +58,6 @@ vars:
     apiVersion: v1
   fieldref:
     fieldpath: data.skip_auth_uri
-- name: static_destination_url
-  objref:
-    kind: ConfigMap
-    name: oidc-authservice-parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.static_destination_url
 - name: userid-header
   objref:
     kind: ConfigMap
@@ -90,5 +83,5 @@ configurations:
 - params.yaml
 images:
 - name: gcr.io/arrikto/kubeflow/oidc-authservice
-  newName: gcr.io/arrikto-public/kubeflow/oidc-authservice
-  newTag: d5c2981
+  newName: gcr.io/arrikto/kubeflow/oidc-authservice
+  newTag: 28c59ef

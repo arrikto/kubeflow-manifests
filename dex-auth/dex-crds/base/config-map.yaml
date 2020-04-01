@@ -6,9 +6,6 @@ metadata:
 data:
   config.yaml: |
     issuer: $(issuer)
-    frontend:
-      issuer: $(frontend_issuer)
-      theme: $(frontend_theme)
     storage:
       type: kubernetes
       config:
