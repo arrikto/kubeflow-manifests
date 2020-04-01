@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: parameters
+data:
+  UI: rok
+  ROK_SECRET_NAME: rok-secret-{username}

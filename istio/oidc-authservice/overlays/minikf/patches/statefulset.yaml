@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: authservice
+spec:
+  template:
+    spec:
+      containers:
+      - name: authservice
+        env:
+          - name: STATIC_DESTINATION_URL
+            value: /reception

@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../base
+
+# Custom image
+images:
+- name: gcr.io/kubeflow-images-public/jupyter-web-app
+  newName: gcr.io/arrikto-public/kubeflow/jupyter-web-app
+  newTag: v1.0-56-g5ae311f8
+
+# FIXME: kfctl doesn't calculate the JSONPatch path correctly
+# Add secret permission
+# patchesJson6902:
+#   - path: patches/cluster-role-patch.yaml
+#     target:
+#       group: rbac.authorization.k8s.io
+#       version: v1
+#       kind: ClusterRole
+#       name: cluster-role
+
+# Custom ConfigMap for Arrikto
+patchesStrategicMerge:
+  - patches/config-map.yaml
+  - patches/cluster-role.yaml
+  - patches/deployment.yaml
+  - patches/jwa-parameters.yaml

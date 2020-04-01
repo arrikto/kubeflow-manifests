@@ -2,4 +2,4 @@ bases:
 - ../../base
 
 patchesStrategicMerge:
-- service.yaml
+- patches/service.yaml

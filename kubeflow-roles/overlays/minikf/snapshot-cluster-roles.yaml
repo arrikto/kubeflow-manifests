@@ -1,0 +1,41 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    rbac.authorization.kubeflow.org/aggregate-to-kubeflow-edit: "true"
+  name: kubeflow-snapshot-edit
+aggregationRule:
+  clusterRoleSelectors:
+  - matchLabels:
+      rbac.authorization.kubeflow.org/aggregate-to-kubeflow-snapshot-edit: "true"
+rules:
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshots
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    rbac.authorization.kubeflow.org/aggregate-to-kubeflow-view: "true"
+    rbac.authorization.kubeflow.org/aggregate-to-kubeflow-snapshot-edit: "true"
+  name: kubeflow-snapshot-view
+rules:
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshots
+  verbs:
+  - get
+  - list
+  - watch

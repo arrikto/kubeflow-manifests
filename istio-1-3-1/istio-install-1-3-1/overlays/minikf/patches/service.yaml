@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: istio-ingressgateway
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    # SMP Kustomize suntax:
+    # https://github.com/kubernetes/community/blob/7d8c4a06e5c9d2bc2735d357523eaba1fa9e0ac3/contributors/devel/sig-api-machinery/strategic-merge-patch.md#syntax
+    $patch: delete
+  - name: http2
+    port: 8080
+    targetPort: 80
+  - name: https
+    port: 443
+    nodePort: null
+  - name: tcp
+    port: 31400
+    nodePort: null
