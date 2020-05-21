@@ -4,6 +4,14 @@ kind: Kustomization
 bases:
 - ../../base
 
+# FIXME: This will not work if a service already exists and is a nodePort
+# because kfctl removes the `nodePort: null` from the final PATCH
+patchesJson6902:
+- target:
+    version: v1
+    kind: Service
+    name: dex
+  path: patches/service.yaml
+
 patchesStrategicMerge:
 - patches/config-map.yaml
-- patches/service.yaml
