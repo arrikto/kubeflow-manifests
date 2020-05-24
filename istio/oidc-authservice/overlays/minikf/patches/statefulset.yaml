@@ -7,6 +7,8 @@ spec:
     spec:
       containers:
       - name: authservice
-        env:
-          - name: STATIC_DESTINATION_URL
-            value: /reception
+        envFrom:
+          - secretRef:
+              name: oidc-authservice-client
+          - configMapRef:
+              name: oidc-authservice-parameters
