@@ -15,3 +15,9 @@ patchesJson6902:
 
 patchesStrategicMerge:
 - patches/config-map.yaml
+
+images:
+# https://github.com/arrikto/rok/issues/2761#issuecomment-633495474
+- name: gcr.io/arrikto/dexidp/dex
+  newName: quay.io/dexidp/dex
+  newTag: v2.24.0
