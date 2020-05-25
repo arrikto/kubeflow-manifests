@@ -7,7 +7,7 @@ data:
     issuer: $(issuer)
     frontend:
       issuer: MiniKF
-      theme: minikf
+      theme: coreos
     storage:
       type: kubernetes
       config:
