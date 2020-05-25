@@ -1,0 +1,122 @@
+apiVersion: v1
+binaryData:
+  favicon.png: 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
+  logo.png: iVBORw0KGgoAAAANSUhEUgAAAIcAAAAoCAMAAADjcxkDAAABC1BMVEVMaXEAKKoAKKoAKKoAKKoAKKoAKKoAKKoAKKoAKKoAKKoAKKoAKKoAKKoAKKoAKKpCefRCefShw/9CefQBS9FCefRsof8BS9FCefShw/9CefRsof9CefQBS9G+3P+hw/9CefQBS9Ghw/9sof++3P++3P8BS9Fsof+hw/9sof9sof8BS9FCefRsof9sof8BS9FCefShw/++3P++3P++3P++3P9CefQBS9FCefRCefQBS9G+3P++3P+hw/+hw/8BS9G+3P8BS9EBS9Ghw/+hw/++3P9CefRCefQBS9EBS9EBS9Ghw/++3P+hw/++3P9sof++3P+hw/++3P8AKKpCefQBS9Ghw/9sof++3P9gc4U8AAAAU3RSTlMA0KBQEPAwwECA4JAgYLBwwIAQ0BBAwPAQ8PDQoDDAgCBgIIAQMKAQoPAw0GCgYMAwUECg8GBw4JDgUIAgcECQ4EBw4LBQULAggLDQsMBwINAwkEeKcj4AAAAJcEhZcwAACxIAAAsSAdLdfvwAAANHSURBVFjDzZhpe6IwEMdHBAKCKB6ttbq1Vrvd3vd97X2fCPL9P8mSkEDoUoU8+qzzQoIk5Mfkn8kkANTMCnLmYchQIbuZkjM/Q1pWDN2Zr0lyFgoZOfO2QgYQuUArK2j2pmQHodJARZiHqfT1hWkVi6EvZkvRr8VlrUR60KeMCqmlqLNjuL2B/srKWu3pwJsTW5VJndlhHJ+cDmtfPc/jSGSiEmliu0IGn0ERoWemno4Q3/j4he+fwZZHLCYhY69M7ILUCPtQicJjoWjkXqWvSRWakfgKTOH/gTsvsq0a97XFaRzUY9oTYVvkXmMF9ZnWTiksDzCF/wLuKcPbd2tHfVqvMtXrHGjIEelJdhgHYoV0Durw9xjjcdBf8bzvW3f3xBPNczt0NYkM0zi0BIfBfwN5WOa+OmkW1+AmwDgdwtHRb3zXa9of66PAelE3OTlKvILDh7rioNQpJQdRyqAKxsNyhguHu5fV9ojZrigHHSbVcZ4djlQLME4AOvVR0jrCHFY8FZg/AmPXMmgSQlaZeEHD/4SCGvr+r+DCEdSvyK8wh0O6UDgOpnbyNolbufS4+Q//dPBzH3hHtDr42hLmqERxNoUjTiqSHN/8IaxuQCSMeqvbhfOg0BTiKFCl4plQmsiB3cZxPJ7B3ngDqhSjfdi4WF6HZntkC3HoCglZJo4LRiqHUtYM5qmY4/YE9sccxwf44rruA/TqVTEOibgcBw9JT+XAf6B/OAawPeY4bPjsYjtotC7FODSy4OAhKaZylIDTBTcuL18FHHuUowrXbmgXXbH5ogNGMEi4TuVAUdUkx2qAMV4KOa5an5YphxuIRIzDiOaDMMdhY8eNTJTDjCZsLg4yLktgk1C+GWNsio4LXVhKkI+D6JRwdKAbY+xAdo5ikqPClt18HHjeYg4cyK+ZPJYbOdZ9KclhsrQnJ0cQx1bBbvdkRYcuFcjrPHkQzQsZRxhLIT9HoFWwmzi4WHLjAGO8gax5IZcnk/y0HKbFiKwxND8F9gBfjaiqytUAqlW2UBdUeGAazZQnz3bfsB0tkMHGbP2gkX3fMPN9lMW2tmaufdR89pW8ZdtXLsw+e2HOHRblHGZhzqXwOZ21EOd0///c8i877X1jqlP/BgAAAABJRU5ErkJggg==
+data:
+  styles.css: |
+    .theme-body {
+      background-color: #efefef;
+      color: #333;
+      font-family: 'Source Sans Pro', Helvetica, sans-serif;
+    }
+
+    .theme-navbar {
+      background-color: #fff;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+      color: #333;
+      font-size: 13px;
+      font-weight: 100;
+      height: 46px;
+      overflow: hidden;
+      padding: 0 10px;
+    }
+
+    .theme-navbar__logo-wrap {
+      display: inline-block;
+      height: 100%;
+      overflow: hidden;
+      padding: 10px 15px;
+      width: 300px;
+    }
+
+    .theme-navbar__logo {
+      height: 100%;
+      max-height: 25px;
+    }
+
+    .theme-heading {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      margin-top: 0;
+    }
+
+    .theme-panel {
+      background-color: #fff;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      padding: 30px;
+    }
+
+    .theme-btn-provider {
+      background-color: #fff;
+      color: #333;
+      min-width: 250px;
+    }
+
+    .theme-btn-provider:hover {
+      color: #999;
+    }
+
+    .theme-btn--primary {
+      background-color: #333;
+      border: none;
+      color: #fff;
+      min-width: 200px;
+      padding: 6px 12px;
+    }
+
+    .theme-btn--primary:hover {
+      background-color: #666;
+      color: #fff;
+    }
+
+    .theme-btn--success {
+      background-color: #2FC98E;
+      color: #fff;
+      width: 250px;
+    }
+
+    .theme-btn--success:hover {
+      background-color: #49E3A8;
+    }
+
+    .theme-form-row {
+      display: block;
+      margin: 20px auto;
+    }
+
+    .theme-form-input {
+      border-radius: 4px;
+      border: 1px solid #CCC;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      color: #666;
+      display: block;
+      font-size: 14px;
+      height: 36px;
+      line-height: 1.42857143;
+      margin: auto;
+      padding: 6px 12px;
+      width: 250px;
+    }
+
+    .theme-form-input:focus,
+    .theme-form-input:active {
+      border-color: #66AFE9;
+      outline: none;
+    }
+
+    .theme-form-label {
+      font-size: 13px;
+      font-weight: 600;
+      margin: 4px auto;
+      position: relative;
+      text-align: left;
+      width: 250px;
+    }
+
+    .theme-link-back {
+      margin-top: 4px;
+    }
+kind: ConfigMap
+metadata:
+  name: dex-theme
