@@ -76,7 +76,7 @@ spec:
       - name: client_id
         value: kubeflow-oidc-authservice
       - name: oidc_redirect_uris
-        value: '["/login/oidc"]'
+        value: '["/authservice/oidc/callback"]'
       # NOTE: This will be patched during provisioning.
       # - name: static_email
       #   value: user

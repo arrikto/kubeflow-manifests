@@ -7,6 +7,9 @@ spec:
     spec:
       containers:
       - name: authservice
+        ports:
+        - name: http-web
+          containerPort: 8082
         envFrom:
           - secretRef:
               name: oidc-authservice-client
