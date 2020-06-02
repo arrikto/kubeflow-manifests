@@ -10,17 +10,3 @@ spec:
         envFrom:
         - secretRef:
             name: dex-oidc-client
-        # XXX: Override default templates and add custom theme
-        volumeMounts:
-        - mountPath: /web/templates/password.html
-          subPath: password.html
-          name: dex-templates
-        - mountPath: /web/themes/minikf
-          name: dex-theme
-      volumes:
-      - configMap:
-          name: dex-templates
-        name: dex-templates
-      - configMap:
-          name: dex-theme
-        name: dex-theme

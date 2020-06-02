@@ -6,6 +6,7 @@ data:
   config.yaml: |
     issuer: $(issuer)
     frontend:
+      dir: /arrikto_web
       issuer: MiniKF
       theme: minikf
     storage:

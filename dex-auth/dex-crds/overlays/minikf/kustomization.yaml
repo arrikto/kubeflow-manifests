@@ -20,8 +20,8 @@ patchesStrategicMerge:
 images:
 # https://github.com/arrikto/rok/issues/2761#issuecomment-633495474
 - name: gcr.io/arrikto/dexidp/dex
-  newName: quay.io/dexidp/dex
-  newTag: v2.24.0
+  newName: gcr.io/arrikto/dex
+  newTag: v2.24.0-v0.15-pre-1435-g6a4183acb
 
 secretGenerator:
 - name: dex-oidc-client
@@ -30,7 +30,3 @@ secretGenerator:
 
 generatorOptions:
   disableNameSuffixHash: true
-
-resources:
-- dex-theme.yaml
-- dex-templates.yaml
