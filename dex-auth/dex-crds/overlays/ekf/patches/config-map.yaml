@@ -7,8 +7,8 @@ data:
     issuer: $(issuer)
     frontend:
       dir: /arrikto_web
-      issuer: MiniKF
-      theme: minikf
+      issuer: Kubeflow
+      theme: ekf
     storage:
       type: kubernetes
       config:
