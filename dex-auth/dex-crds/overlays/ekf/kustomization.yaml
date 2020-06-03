@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../base
+
+# FIXME: This will not work if a service already exists and is a nodePort
+# because kfctl removes the `nodePort: null` from the final PATCH
+patchesJson6902:
+- target:
+    version: v1
+    kind: Service
+    name: dex
+  path: patches/service.yaml
+
+patchesStrategicMerge:
+- patches/config-map.yaml
+- patches/deployment.yaml
+
+images:
+# https://github.com/arrikto/rok/issues/2761#issuecomment-633495474
+- name: gcr.io/arrikto/dexidp/dex
+  newName: gcr.io/arrikto/dex
+  newTag: v2.24.0-v0.15-pre-1435-g6a4183acb 
+
+secretGenerator:
+- name: dex-oidc-client
+  type: Opaque
+  env: secret_params.env
+
+generatorOptions:
+  disableNameSuffixHash: true

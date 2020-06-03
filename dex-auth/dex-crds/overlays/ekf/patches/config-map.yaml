@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dex
+data:
+  config.yaml: |
+    issuer: $(issuer)
+    frontend:
+      dir: /arrikto_web
+      issuer: MiniKF
+      theme: minikf
+    storage:
+      type: kubernetes
+      config:
+        inCluster: true
+    web:
+      http: 0.0.0.0:5556
+    logger:
+      level: "debug"
+      format: text
+    oauth2:
+      skipApprovalScreen: true
+    enablePasswordDB: true
+    staticPasswords:
+    - email: $(static_email)
+      hash: $(static_password_hash)
+      # https://github.com/dexidp/dex/pull/1601/commits
+      # FIXME: Use hashFromEnv instead
+      username: $(static_username)
+      userID: $(static_user_id)
+    staticClients:
+    # https://github.com/dexidp/dex/pull/1664
+    - idEnv: OIDC_CLIENT_ID
+      redirectURIs: $(oidc_redirect_uris)
+      name: 'Dex Login Application'
+      secretEnv: OIDC_CLIENT_SECRET

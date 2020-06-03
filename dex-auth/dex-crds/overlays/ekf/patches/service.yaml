@@ -1,0 +1,12 @@
+[
+    {"op": "replace",
+     "path": "/spec/ports",
+     "value": [{"name": "dex",
+                "port": 5556,
+                "protocol": "TCP",
+                "nodePort": null,
+                "targetPort": 5556}]},
+    {"op": "replace",
+     "path": "/spec/type",
+     "value": "ClusterIP"}
+]

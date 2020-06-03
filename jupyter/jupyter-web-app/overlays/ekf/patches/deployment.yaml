@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  template:
+    spec:
+      containers:
+      - name: jupyter-web-app
+        env:
+        - name: ROK_URL
+          value: http://rok.rok.svc.cluster.local
+        - name: ROK_SERVICE_TOKEN_SECRET
+          value: rok-service-token
+        - name: ROK_USER_SECRET_NAME
+          value: rok-secret-{username}

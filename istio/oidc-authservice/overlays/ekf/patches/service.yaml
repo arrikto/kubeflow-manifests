@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: authservice
+spec:
+  ports:
+  - port: 8082
+    name: http-web
+    targetPort: http-web
+  # Authservice becomes ready when OIDC discovery finishes.
+  # Have authservice be reachable during startup even before
+  # OIDC provider discovery, e.g., when behind same istio ingressgateway
+  # where authservice will try to connect to OIDC provider via the
+  # public endpoint (and thus envoyfilter will try to redirect the traffic to
+  # authservice that should be reachable).
+  publishNotReadyAddresses: true
+---

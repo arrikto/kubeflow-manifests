@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../base
+
+images:
+- name: gcr.io/kubeflow-images-public/centraldashboard
+  newName: gcr.io/arrikto-public/kubeflow/centraldashboard
+  newTag: v20200603-v1.0-65-g8d7e645b
