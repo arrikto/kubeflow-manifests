@@ -1,0 +1,21 @@
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: centraldashboard
+  namespace: kubeflow
+spec:
+  rules:
+  - services:
+    - centraldashboard.kubeflow.svc.cluster.local
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: bind-centraldashboard-viewers
+  namespace: kubeflow
+spec:
+  subjects:
+  - user: "*" # Central dashboard needs a sidecar to talk to kfam in mTLS, but itself can be accessed by anyone.
+  roleRef:
+    kind: ServiceRole
+    name: centraldashboard
