@@ -122,13 +122,13 @@ class KubeflowImageBuilderCLI(cli.RokCLI):
 
 class Application(object):
 
-    def __init__(self, name, docker_context, dockerfile, manifests_dir,
+    def __init__(self, name, docker_context, dockerfile, manifests_dirs,
                  src_img, dst_img, repo):
         self.name = name
         self.client = docker.from_env()
         self.docker_context = docker_context
         self.dockerfile = dockerfile
-        self.manifests_dir = manifests_dir
+        self.manifests_dirs = manifests_dirs
         self.src_img = src_img
         self.dst_img = dst_img
         self.repo = repo
@@ -139,7 +139,7 @@ class Application(object):
         params = {p["name"]: p["value"] for p in app["params"]}
         return Application(
             app["name"], params["path_to_context"],
-            params["path_to_docker_file"], params["path_to_manifests_dir"],
+            params["path_to_docker_file"], params["path_to_manifests_dirs"],
             params["src_image_url"], params["dst_image_url"],
             repos[app["sourceRepo"]]
         )
@@ -169,18 +169,19 @@ class Application(object):
 
     def set_kustomization_image(self, manifests_repo):
         # Change image in kustomization
-        kust_path = os.path.join(manifests_repo.path,
-                                 self.manifests_dir, "kustomization.yaml")
-        with open(kust_path) as f:
-            kustomization = yaml.load(f)
-        kustomization = edit_kustomization_image(
-            kustomization,
-            self.src_img,
-            self.dst_img,
-            self.repo.git_hash
-        )
-        with open(kust_path, "w") as f:
-            yaml.dump(kustomization, f)
+        for _dir in self.manifests_dirs:
+            kust_path = os.path.join(manifests_repo.path,
+                                     _dir, "kustomization.yaml")
+            with open(kust_path) as f:
+                kustomization = yaml.load(f)
+            kustomization = edit_kustomization_image(
+                kustomization,
+                self.src_img,
+                self.dst_img,
+                self.repo.git_hash
+            )
+            with open(kust_path, "w") as f:
+                yaml.dump(kustomization, f)
 
     @property
     def tag(self):
@@ -245,11 +246,13 @@ def create_commit(apps, manifests_repo):
     with tempfile.NamedTemporaryFile(mode="w", delete=False) as f:
         f.write(msg)
         for app in apps:
-            kust = os.path.join(manifests_repo.path, app.manifests_dir,
-                                "kustomization.yaml")
-            yld(["git", "add", kust], cwd=manifests_repo.path)
-            msg = "Updated '%s' image to %s\n" % (app.name, app.tag)
-            f.write(msg)
+            for _dir in app.manifests_dirs:
+                kust = os.path.join(manifests_repo.path, _dir,
+                                    "kustomization.yaml")
+                yld(["git", "add", kust], cwd=manifests_repo.path)
+                msg = ("Updated app '%s' image to %s, in kustomization %s\n" %
+                       (app.name, app.tag, _dir))
+                f.write(msg)
         f.flush()
         yld(["git", "commit", "-F", f.name], cwd=manifests_repo.path)
 
@@ -268,18 +271,24 @@ def edit_kustomization_image(kustomization, src_img, new_name, new_tag,
         if val:
             d[key] = val
 
-    target = {"name": src_img}
-    _set(target, "newName", new_name)
-    if new_digest:
-        new_tag += "@%s" % new_digest
-    _set(target, "newTag", new_tag)
+    def _amend_image(img={}, new_name=new_name, new_tag=new_tag,
+                     new_digest=new_digest):
+        _set(img, "newName", new_name)
+        if new_digest:
+            new_tag += "@%s" % new_digest
+        _set(img, "newTag", new_tag)
 
-    for (i, image) in enumerate(kustomization.get("images", [])):
-        if image["name"] == target["name"]:
-            kustomization["images"][i] = target
-            return kustomization
+    if "images" not in kustomization:
+        kustomization["images"] = []
+    for image in kustomization["images"]:
+        if image["name"] == src_img:
+            # Amend the object to retain comments
+            _amend_image(image)
+            break
+    else:
+        kustomization["images"].append({"name": src_img})
+        _amend_image(kustomization["images"][-1])
 
-    kustomization["images"].append(target)
     return kustomization
 
 
