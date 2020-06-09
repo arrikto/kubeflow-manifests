@@ -7,4 +7,4 @@ bases:
 images:
 - name: gcr.io/kubeflow-images-public/centraldashboard
   newName: gcr.io/arrikto-public/kubeflow/centraldashboard
-  newTag: v20200603-v1.0-65-g8d7e645b
+  newTag: v1.0-65-gb1cc779e

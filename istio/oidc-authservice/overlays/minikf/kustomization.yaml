@@ -6,8 +6,8 @@ bases:
 
 images:
 - name: gcr.io/arrikto/kubeflow/oidc-authservice
-  newName: gcr.io/arrikto/kubeflow/oidc-authservice
-  newTag: 71e3d5e
+  newName: gcr.io/arrikto-public/kubeflow/oidc-authservice
+  newTag: fef11c3
 
 patchesStrategicMerge:
 - patches/statefulset.yaml

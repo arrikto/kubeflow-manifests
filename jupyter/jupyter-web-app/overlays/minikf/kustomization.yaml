@@ -2,13 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-  - ../../base
+- ../../base
 
 # Custom image
 images:
 - name: gcr.io/kubeflow-images-public/jupyter-web-app
   newName: gcr.io/arrikto-public/kubeflow/jupyter-web-app
-  newTag: v1.0-56-g5ae311f8
+  newTag: v1.0-65-gb1cc779e
 
 # FIXME: kfctl doesn't calculate the JSONPatch path correctly
 # Add secret permission
@@ -22,7 +22,7 @@ images:
 
 # Custom ConfigMap for Arrikto
 patchesStrategicMerge:
-  - patches/config-map.yaml
-  - patches/cluster-role.yaml
-  - patches/deployment.yaml
-  - patches/jwa-parameters.yaml
+- patches/config-map.yaml
+- patches/cluster-role.yaml
+- patches/deployment.yaml
+- patches/jwa-parameters.yaml

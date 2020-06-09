@@ -2,3 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
 - ../../base
+images:
+- name: coderaiser/cloudcmd
+  newName: gcr.io/arrikto-public/kubeflow/volumes-viewer
+  newTag: v14.3.0-12-g79d7536b
+- name: controller
+  newName: gcr.io/arrikto-public/kubeflow/pvcviewer-controller
+  newTag: v1.0-65-gb1cc779e
