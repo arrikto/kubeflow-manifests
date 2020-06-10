@@ -6,3 +6,9 @@ images:
 - name: gcr.io/arrikto-public/kubeflow/reception
   newName: gcr.io/arrikto-public/kubeflow/reception
   newTag: v1.0-65-gb1cc779e
+
+resources:
+- istio.yaml
+
+patchesStrategicMerge:
+- patches/deployment.yaml

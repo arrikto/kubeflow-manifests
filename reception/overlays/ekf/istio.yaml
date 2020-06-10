@@ -1,0 +1,32 @@
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: kubeflow-reception
+  namespace: kubeflow
+spec:
+  rules:
+  - services:
+    - kubeflow-reception.kubeflow.svc.cluster.local
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: bind-reception-viewer
+  namespace: kubeflow
+spec:
+  subjects:
+  - properties:
+      source.namespace: istio-system
+  roleRef:
+    kind: ServiceRole
+    name: kubeflow-reception
+---
+apiVersion: "networking.istio.io/v1alpha3"
+kind: DestinationRule
+metadata:
+  name: kubeflow-reception
+spec:
+  host: kubeflow-reception.kubeflow.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
