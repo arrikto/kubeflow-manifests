@@ -1,0 +1,36 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: kubeflow-user
+
+resources:
+- cr-empty.yaml
+- poddefault-rok.yaml
+- poddefault-ml-pipeline.yaml
+- secret-mlpipeline-minio.yaml
+- pipeline-runner.yaml
+- rb-default-editor-edit.yaml
+- rb-pipeline-runner-admin.yaml
+
+configMapGenerator:
+- name: new-user-parameters
+  env: params.env
+generatorOptions:
+  disableNameSuffixHash: true
+vars:
+- name: NAMESPACE
+  objref:
+    kind: ConfigMap
+    name: new-user-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: metadata.namespace
+- name: rokUrl
+  objref:
+    kind: ConfigMap
+    name: new-user-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.rokUrl
+configurations:
+- params.yaml

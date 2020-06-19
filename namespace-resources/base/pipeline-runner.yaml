@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pipeline-runner
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pipeline-runner
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: pipeline-runner
+subjects:
+- kind: ServiceAccount
+  name: pipeline-runner
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sa-pipeline-runner-edit
+  annotations:
+    user: system:serviceaccount:$(NAMESPACE):pipeline-runner
+    role: edit
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cr-empty
+subjects:
+  - kind: User
+    name: system:serviceaccount:$(NAMESPACE):pipeline-runner

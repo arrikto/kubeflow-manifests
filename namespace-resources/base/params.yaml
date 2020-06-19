@@ -1,0 +1,19 @@
+varReference:
+- path: metadata/namespace
+  kind: Secret
+- path: metadata/namespace
+  kind: ServiceAccount
+- path: metadata/namespace
+  kind: RoleBinding
+- path: metadata/annotations/user
+  kind: RoleBinding
+- path: subjects/namespace
+  kind: RoleBinding
+- path: subjects/name
+  kind: RoleBinding
+- path: metadata/name
+  kind: PodDefault
+- path: metadata/namespace
+  kind: PodDefault
+- path: spec/env/value
+  kind: PodDefault

@@ -1,0 +1,40 @@
+apiVersion: kubeflow.org/v1alpha1
+kind: PodDefault
+metadata:
+  name: rok-auth
+spec:
+  desc: Allow access to Rok
+  env:
+  - name: ROK_GW_URL
+    value: $(rokUrl)
+  - name: ROK_GW_PARAM_REGISTER_POD_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+  - name: ROK_GW_PARAM_REGISTER_POD_POD
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+  - name: ROK_GW_PARAM_REGISTER_KUBERNETES_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+  - name: ROK_GW_PARAM_REGISTER_JUPYTER_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+  - name: ROK_GW_PARAM_REGISTER_JUPYTER_LAB
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+  - name: ROK_GW_PARAM_REGISTER_DATASET_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+  - name: ROK_GW_ACCOUNT
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+  selector:
+    matchLabels:
+      access-rok: "true"

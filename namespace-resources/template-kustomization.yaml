@@ -1,0 +1,13 @@
+# FIXME: Instead of relying on templated kustomizations, we can rely on the
+# `kustomize edit set namespace $NAMESPACE` command. Downsides are:
+#
+# 1. Command must be executed in inside the overlay folder.
+# 2. Earlier kustomize versions remove YAML comments.
+# 3. `rok-tools` needs to be upgraded in order to include `kustomize`.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: $NAMESPACE
+
+bases:
+- ../../base
