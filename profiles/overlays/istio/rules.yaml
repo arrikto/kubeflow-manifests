@@ -1,0 +1,37 @@
+apiVersion: "networking.istio.io/v1alpha3"
+kind: DestinationRule
+metadata:
+  name: profiles-kfam
+  namespace: kubeflow
+spec:
+  host: profiles-kfam.kubeflow.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: profiles-kfam
+  namespace: kubeflow
+spec:
+  rules:
+  - services:
+    - profiles-kfam.kubeflow.svc.cluster.local
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: bind-kfam-viewers
+  namespace: kubeflow
+spec:
+  subjects:
+  - properties:
+      source.principal: cluster.local/ns/kubeflow/sa/centraldashboard
+  - properties:
+      source.principal: cluster.local/ns/kubeflow/sa/kubeflow-reception
+  - properties:
+      source.principal: cluster.local/ns/kubeflow/sa/ml-pipeline
+  roleRef:
+    kind: ServiceRole
+    name: profiles-kfam

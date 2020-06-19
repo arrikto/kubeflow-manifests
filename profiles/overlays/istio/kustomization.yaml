@@ -4,5 +4,6 @@ bases:
 - ../../base
 resources:
 - virtual-service.yaml
+- rules.yaml
 configurations:
 - params.yaml
