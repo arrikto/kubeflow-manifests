@@ -7,3 +7,14 @@ spec:
     metadata:
       annotations:
         sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - name: centraldashboard
+        volumeMounts:
+        - mountPath: /config
+          name: config
+          readOnly: true
+      volumes:
+      - configMap:
+          name: centraldashboard
+        name: config

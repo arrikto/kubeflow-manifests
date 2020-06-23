@@ -3,6 +3,8 @@ kind: Kustomization
 
 bases:
 - ../../base
+resources:
+- configmap.yaml
 
 images:
 - name: gcr.io/kubeflow-images-public/centraldashboard
