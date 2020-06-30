@@ -3,6 +3,6 @@ kind: Kustomization
 bases:
 - ../../base
 images:
-- name: gcr.io/arrikto-playground/volumes-web-app
+- name: gcr.io/arrikto-public/kubeflow/volumes-web-app
   newName: gcr.io/arrikto-public/kubeflow/volumes-web-app
-  newTag: v1.0-65-gb1cc779e
+  newTag: v1.0-128-g29a4fb99

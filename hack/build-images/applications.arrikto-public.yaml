@@ -187,7 +187,7 @@ applications:
           - "volumes-web-app/overlays/minikf"
           - "volumes-web-app/overlays/ekf"
       - name: "src_image_url"
-        value: "gcr.io/arrikto-playground/volumes-web-app"
+        value: "gcr.io/arrikto-public/kubeflow/volumes-web-app"
       - name: "dst_image_url"
         value: "gcr.io/arrikto-public/kubeflow/volumes-web-app"
     sourceRepo: kubeflow
