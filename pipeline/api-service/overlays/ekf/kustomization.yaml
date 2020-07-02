@@ -15,3 +15,27 @@ images:
 
 patchesStrategicMerge:
 - patches/config-map.yaml
+- patches/deployment.yaml
+
+configMapGenerator:
+- name: api-service-parameters
+  env: params.env
+generatorOptions:
+  disableNameSuffixHash: true
+vars:
+- name: kubeflowUseridHeader
+  objref:
+    kind: ConfigMap
+    name: api-service-parameters
+    version: v1
+  fieldref:
+    fieldpath: data.kubeflowUseridHeader
+- name: kubeflowUseridPrefix
+  objref:
+    kind: ConfigMap
+    name: api-service-parameters
+    version: v1
+  fieldref:
+    fieldpath: data.kubeflowUseridPrefix
+configurations:
+- params.yaml

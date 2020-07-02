@@ -23,7 +23,9 @@ data:
         "Name": "ml-pipeline-visualizationserver",
         "Port": 8888
       },
-      "MULTIUSER": false
+      "MULTIUSER": true,
+      "KUBEFLOW_USERID_HEADER": "$(kubeflowUseridHeader)",
+      "KUBEFLOW_USERID_PREFIX": "$(kubeflowUseridPrefix)"
     }
 kind: ConfigMap
 metadata:
