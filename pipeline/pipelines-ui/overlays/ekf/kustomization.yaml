@@ -12,3 +12,6 @@ images:
 - name: gcr.io/ml-pipeline/frontend
   newName: gcr.io/arrikto/ml-pipeline-frontend
   newTag: 1.0.0-rc.2-13-gee9080f
+
+patchesStrategicMerge:
+- patches/deployment.yaml
