@@ -257,6 +257,7 @@ spec:
       overlays:
       - application
       - istio
+      - ekf
       repoRef:
         name: manifests
         path: katib/katib-controller
