@@ -104,6 +104,7 @@ spec:
       overlays:
       - istio
       - application
+      - ekf
       repoRef:
         name: manifests
         path: argo
