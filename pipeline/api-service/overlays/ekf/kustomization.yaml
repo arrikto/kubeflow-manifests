@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../base
+
+images:
+- name: gcr.io/ml-pipeline/api-server
+  newName: gcr.io/arrikto/ml-pipeline-api-server
+  newTag: 1.0.0-rc.2-15-g2021369
