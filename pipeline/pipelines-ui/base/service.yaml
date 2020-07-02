@@ -19,6 +19,8 @@ metadata:
 spec:
   ports:
   - port: 80
+    name: http
+    protocol: TCP
     targetPort: 3000
   selector:
     app: ml-pipeline-ui
@@ -43,6 +45,8 @@ metadata:
 spec:
   ports:
   - port: 80
+    name: http
+    protocol: TCP
     targetPort: 3000
   selector:
     app: ml-pipeline-tensorboard-ui
