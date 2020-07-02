@@ -4,6 +4,10 @@ kind: Kustomization
 bases:
 - ../../base
 
+resources:
+- cluster-role.yaml
+- cluster-role-binding.yaml
+
 images:
 - name: gcr.io/ml-pipeline/frontend
   newName: gcr.io/arrikto/ml-pipeline-frontend
