@@ -7,3 +7,6 @@ images:
 - name: gcr.io/ml-pipeline/persistenceagent
   newName: gcr.io/ml-pipeline/persistenceagent
   newTag: 1.0.0-rc.2
+
+patchesStrategicMerge:
+- patches/deployment.yaml
