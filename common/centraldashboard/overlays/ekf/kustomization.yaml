@@ -13,3 +13,6 @@ images:
 
 patchesStrategicMerge:
 - patches/deployment.yaml
+
+configurations:
+- params.yaml
