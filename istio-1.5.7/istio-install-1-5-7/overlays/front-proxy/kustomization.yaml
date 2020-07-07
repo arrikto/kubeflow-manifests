@@ -1,0 +1,9 @@
+# This file is part of Rok.
+#
+# Copyright © 2020 Arrikto Inc.  All Rights Reserved.
+
+# Import base
+bases:
+- ../../base
+
+namespace: istio-system
