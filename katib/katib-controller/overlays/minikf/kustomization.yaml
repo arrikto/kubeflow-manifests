@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../base
+
+images:
+- name: gcr.io/kubeflow-images-public/katib/v1alpha3/katib-controller
+  newName: gcr.io/arrikto/katib-controller
+  newTag: 40b5b51a
+
+patchesStrategicMerge:
+- patches/katib-configmap.yaml
