@@ -1,0 +1,31 @@
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: mysql
+  namespace: kubeflow
+spec:
+  rules:
+  - services:
+    - mysql.kubeflow.svc.cluster.local
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: bind-mysql-anyone
+  namespace: kubeflow
+spec:
+  subjects:
+  - user: '*'
+  roleRef:
+    kind: ServiceRole
+    name: mysql
+---
+apiVersion: "networking.istio.io/v1alpha3"
+kind: DestinationRule
+metadata:
+  name: mysql
+spec:
+  host: mysql.kubeflow.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
