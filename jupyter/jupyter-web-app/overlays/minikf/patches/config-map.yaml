@@ -24,9 +24,10 @@ data:
       image:
         # The container Image for the user's Jupyter Notebook
         # If readonly, this value must be a member of the list below
-        value: gcr.io/arrikto-public/tensorflow-1.15.2-notebook-cpu:1.0.0.arr1
+        value: gcr.io/arrikto/jupyter-kale:v0.5.0-13-gf5308d4
         # The list of available standard container Images
         options:
+          - gcr.io/arrikto/jupyter-kale:v0.5.0-13-gf5308d4
           - gcr.io/arrikto-public/tensorflow-1.15.2-notebook-cpu:1.0.0.arr1
           - gcr.io/arrikto-public/tensorflow-1.15.2-notebook-gpu:1.0.0.arr1
           - gcr.io/arrikto-public/tensorflow-1.14.0-notebook-cpu:kubecon-workshop
@@ -133,5 +134,7 @@ data:
         # value:
         #   - add-gcp-secret
         #   - default-editor
-        value: []
+        value:
+          - access-rok
+          - access-ml-pipeline
         readOnly: false

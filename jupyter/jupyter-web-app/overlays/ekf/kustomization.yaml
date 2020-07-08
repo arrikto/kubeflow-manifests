@@ -8,7 +8,7 @@ bases:
 images:
 - name: gcr.io/kubeflow-images-public/jupyter-web-app
   newName: gcr.io/arrikto-public/kubeflow/jupyter-web-app
-  newTag: v1.0.0-arr-128-g29a4fb99
+  newTag: v1.0-140-gb9972300
 
 # FIXME: kfctl doesn't calculate the JSONPatch path correctly
 # Add secret permission
