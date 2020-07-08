@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-pipeline-ui
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - name: ml-pipeline-ui
+        env:
+        - name: ARGO_ARCHIVE_LOGS
+          value: "true"
+        - name: ARGO_ARCHIVE_PREFIX
+          value: artifacts
+        - name: DEPLOYMENT
+          value: KUBEFLOW
+        - name: DISABLE_GKE_METADATA
+          value: "true"
+        - name: KUBEFLOW_USERID_HEADER
+          value: $(kubeflowUseridHeader)
+        - name: KUBEFLOW_USERID_PREFIX
+          value: $(kubeflowUseridPrefix)
+        - name: ENABLE_AUTHZ
+          value: "true"
+        - name: ALLOW_CUSTOM_VISUALIZATIONS
+          value: "true"

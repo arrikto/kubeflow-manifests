@@ -9,31 +9,33 @@ resources:
 - cluster-role-binding.yaml
 
 images:
-- name: gcr.io/ml-pipeline/frontend
-  newName: gcr.io/arrikto/ml-pipeline-frontend
-  newTag: 1.0.0-rc.2-13-gee9080f
+- name: gcr.io/ml-pipeline/api-server
+  newName: gcr.io/arrikto/ml-pipeline-api-server
+  newTag: 1.0.0-rc.2-15-g2021369
 
 patchesStrategicMerge:
+- patches/config-map.yaml
 - patches/deployment.yaml
 
 configMapGenerator:
-- name: ui-parameters
+- name: api-service-parameters
   env: params.env
-  behavior: merge
 generatorOptions:
   disableNameSuffixHash: true
 vars:
 - name: kubeflowUseridHeader
   objref:
     kind: ConfigMap
-    name: ui-parameters
+    name: api-service-parameters
     version: v1
   fieldref:
     fieldpath: data.kubeflowUseridHeader
 - name: kubeflowUseridPrefix
   objref:
     kind: ConfigMap
-    name: ui-parameters
+    name: api-service-parameters
     version: v1
   fieldref:
     fieldpath: data.kubeflowUseridPrefix
+configurations:
+- params.yaml
