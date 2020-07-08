@@ -1,0 +1,35 @@
+#
+# Copyright © 2020 Arrikto Inc.  All Rights Reserved.
+#
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kfp-cache-system
+
+bases:
+  - ../../base
+
+resources:
+  - certificate.yaml
+
+patchesStrategicMerge:
+  - mutating_webhook_configuration.yaml
+
+vars:
+  - fieldref:
+      fieldPath: metadata.name
+    name: SERVICE_NAME
+    objref:
+      apiVersion: v1
+      kind: Service
+      name: kfp-cache
+  - name: CERT_NAME
+    objref:
+        kind: Certificate
+        group: cert-manager.io
+        version: v1alpha2
+        name: kfp-cache-webhook-cert
+    fieldref:
+      fieldpath: metadata.name
+
+configurations:
+  - params.yaml

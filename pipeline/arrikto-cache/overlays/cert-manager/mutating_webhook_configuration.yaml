@@ -1,0 +1,10 @@
+#
+# Copyright © 2020 Arrikto Inc.  All Rights Reserved.
+#
+
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: kfp-cache
+  annotations:
+    cert-manager.io/inject-ca-from: $(NAMESPACE)/$(CERT_NAME)

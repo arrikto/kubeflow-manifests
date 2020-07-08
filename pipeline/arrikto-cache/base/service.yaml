@@ -1,0 +1,17 @@
+#
+# Copyright © 2020 Arrikto Inc.  All Rights Reserved.
+#
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kfp-cache
+  labels:
+    app: kfp-cache
+spec:
+  ports:
+  - name: https-webhook
+    port: 443
+    targetPort: 8443
+  selector:
+    app: kfp-cache

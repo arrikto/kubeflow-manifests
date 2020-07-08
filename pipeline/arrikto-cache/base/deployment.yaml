@@ -1,0 +1,53 @@
+#
+# Copyright © 2020 Arrikto Inc.  All Rights Reserved.
+#
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kfp-cache
+  labels:
+    app: kfp-cache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kfp-cache
+  template:
+    metadata:
+      labels:
+        app: kfp-cache
+      # Disable istio injection,since this Pod already has TLS enabled
+      # and only talks to the K8s API Server.
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - name: webhook
+          image: gcr.io/arrikto-public/kfp-cache
+          imagePullPolicy: IfNotPresent
+          args:
+            - webhook
+            - --port=8443
+            - --tls-dir=/etc/webhook/certs
+            - --cert-name=tls.crt
+            - --key-name=tls.key
+            - --rok-endpoint=http://rok.rok.svc.cluster.local
+          volumeMounts:
+            - name: webhook-certs
+              mountPath: /etc/webhook/certs
+              readOnly: true
+          ports:
+            - name: https-webhook
+              containerPort: 8443
+        - name: controller
+          image: gcr.io/arrikto-public/kfp-cache
+          imagePullPolicy: IfNotPresent
+          args:
+            - controller
+      serviceAccount: kfp-cache
+      serviceAccountName: kfp-cache
+      volumes:
+        - name: webhook-certs
+          secret:
+            secretName: kfp-cache-webhook-certs

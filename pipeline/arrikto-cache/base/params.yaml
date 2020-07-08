@@ -1,0 +1,7 @@
+#
+# Copyright © 2020 Arrikto Inc.  All Rights Reserved.
+#
+
+varReference:
+- kind: MutatingWebhookConfiguration
+  path: webhooks/clientConfig/service/namespace

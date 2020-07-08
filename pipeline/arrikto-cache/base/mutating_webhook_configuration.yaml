@@ -1,0 +1,24 @@
+#
+# Copyright © 2020 Arrikto Inc.  All Rights Reserved.
+#
+
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: kfp-cache
+  labels:
+    app: kfp-cache
+webhooks:
+  - name: kfp-cache.arrikto.com
+    clientConfig:
+      service:
+        name: kfp-cache
+        namespace: $(NAMESPACE)
+        path: "/mutate"
+      # This will be patched by cert-manager
+      caBundle: ""
+    rules:
+      - operations: ["CREATE"]
+        apiGroups: [""]
+        apiVersions: ["v1"]
+        resources: ["pods"]

@@ -1,0 +1,36 @@
+#
+# Copyright © 2020 Arrikto Inc.  All Rights Reserved.
+#
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kfp-cache-system
+
+resources:
+- namespace.yaml
+- deployment.yaml
+- mutating_webhook_configuration.yaml
+- service.yaml
+- service_account.yaml
+- webhook_role.yaml
+- webhook_role_binding.yaml
+- controller_role.yaml
+- controller_role_binding.yaml
+- leader_election_role.yaml
+- leader_election_role_binding.yaml
+
+# For the git version, check the docker image labels
+images:
+- name: gcr.io/arrikto-public/kfp-cache
+  newTag: fc891f26
+
+vars:
+- fieldref:
+    fieldPath: metadata.namespace
+  name: NAMESPACE
+  objref:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: kfp-cache
+
+configurations:
+- params.yaml
